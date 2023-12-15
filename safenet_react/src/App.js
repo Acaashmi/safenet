@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "@nextui-org/react";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
@@ -14,7 +13,7 @@ export default function App() {
   //states for username and name
   const [name, setName] = useState(null);
   const [username, setUsername] = useState(null);
- 
+
   useEffect(() => {
     console.log(username);
   }, [username]);

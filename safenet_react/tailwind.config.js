@@ -7,8 +7,10 @@ module.exports = {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily: {
+      sans: ["Poppins", "Segoe UI", "Roboto"],
+    },
     extend: {},
   },
-  darkMode: "class",
   plugins: [nextui()],
 };

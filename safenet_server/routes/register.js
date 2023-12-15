@@ -21,9 +21,9 @@ registerRouter.post("/", async (req, res) => {
     const { name, username, password } = req.body;
 
     // If any field is missing then error
-    // if (!username || !password || !name) {
-    //   throw new Error("All fields are needed");
-    // }
+    if (!username || !password || !name) {
+      throw new Error("All fields are needed");
+    }
 
     // Check if user with same username exists
     const userRes = await user.findOne({ username });
@@ -35,15 +35,20 @@ registerRouter.post("/", async (req, res) => {
     }
 
     // Add user to database
-    await user.create({
+    const newUser = await user.create({
       name,
       username,
       password,
     });
 
     // If everything goes well send status 200
-    return res.json({ message: "User Created", status: 200 });
-    console.log("User Created");
+    console.log("New User has been created");
+    return res.json({
+      message: "User Created",
+      status: 200,
+      username: newUser.username,
+      name: newUser.name,
+    });
   } catch (err) {
     // If any error occurs just say an error has occurred
     console.log(err);
@@ -52,5 +57,3 @@ registerRouter.post("/", async (req, res) => {
 });
 
 export default registerRouter;
-
-// Improvement : Direct Login, Send JWT Token

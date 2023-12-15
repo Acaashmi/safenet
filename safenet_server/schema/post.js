@@ -2,9 +2,11 @@ import { Schema, model } from "mongoose";
 
 // Create a Schema for User
 const postSchema = new Schema({
-  name: String,
   username: String,
-  password: String,
+  name: String,
+  postDate: Date,
+  postLocation: String,
+  postDetails: String,
 });
 
 const post = model("posts", postSchema);

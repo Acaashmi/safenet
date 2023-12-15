@@ -32,17 +32,17 @@ loginRouter.post("/", async (req, res) => {
       // If user does not exists
       if (!data) {
         console.log("User Does Not Exist");
-        res.json({ message: "User Does Not Exist", status: 400 });
+        return res.json({ message: "User Does Not Exist", status: 400 });
       }
 
       // If wrong password
       if (data.password !== password) {
         console.log("Wrong Password");
-        res.json({ message: "Wrong Password", status: 400 });
+        return res.json({ message: "Wrong Password", status: 400 });
       }
+
       // If everything goes well send status 200
-      // Also return username and name to the frontend
-      res.json({
+      return res.json({
         message: "Succesful login",
         status: 200,
         username: data.username,
@@ -52,9 +52,8 @@ loginRouter.post("/", async (req, res) => {
   } catch (err) {
     // If error then catch it and return 400
     console.log(err);
-    res.json({ message: "Error", status: 400 });
+    return res.json({ message: "Error", status: 400 });
   }
 });
-// Improvement : Send JWT Token
 
 export default loginRouter;
