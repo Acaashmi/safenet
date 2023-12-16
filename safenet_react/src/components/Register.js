@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, Link } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 function Register({ _name, _username, _setName, _setUsername }) {
   // Various Hooks
