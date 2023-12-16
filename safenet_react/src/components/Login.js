@@ -40,7 +40,7 @@ function Login({ _name, _username, _setName, _setUsername }) {
           _setName(data.name);
           _setUsername(data.username);
         }
-        window.location.reload();
+        else window.location.reload();
       })
       .catch((err) => {
         // Something went wrong when fetching

@@ -47,8 +47,7 @@ function Register({ _name, _username, _setName, _setUsername }) {
         if (data.status == 200) {
           _setName(data.name);
           _setUsername(data.username);
-        }
-        window.location.reload();
+        } else window.location.reload();
       })
       .catch((err) => {
         console.log(err.message);
