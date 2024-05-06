@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, Image, Button, Slider } from "@nextui-org/react";
+import { Card, CardBody, Image, Button, Slider ,Link} from "@nextui-org/react";
 
 function About() {
   return (
@@ -21,7 +21,9 @@ function About() {
             your story today."
           </p>
           <div className="flex flex-row gap-5">
-          <Button className="mt-5 bg-white font-bold">Start Sharing</Button>
+          <Button className="mt-5 bg-white font-bold"
+          as={Link}
+          href="/postUpload">Start Sharing</Button>
           <Button className="mt-5 bg-white font-bold">Start Reading</Button>
           </div>
           

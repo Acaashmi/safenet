@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
+import UploadPost from "./components/UploadPost";
 
 import {
   createBrowserRouter,
@@ -46,7 +47,16 @@ export default function App() {
         />
       ),
     },
+    {
+      path: "/postUpload",
+      element: (
+        <UploadPost
+        />
+      ),
+    },
   ]);
+
+
 
   return <RouterProvider router={router} />;
 }

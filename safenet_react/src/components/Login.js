@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Input, Button, Link } from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
-import bcrypt from "bcryptjs";
+// import bcrypt from "bcryptjs";
 
 function Login({ _name, _username, _setName, _setUsername }) {
   const [formUsername, setFormUsername] = useState("");
@@ -22,8 +22,8 @@ function Login({ _name, _username, _setName, _setUsername }) {
     // append values to the form data....we will improve this
     let formData = new FormData();
     formData.append("username", formUsername);
-    const hashedPassword = await bcrypt.hash(formPassword, 10);
-    formData.append("password", hashedPassword);
+    // const hashedPassword = await bcrypt.hash(formPassword, 10);
+    formData.append("password", formPassword);
 
     // fetching
     const response = await fetch("http://localhost:3001/login", {
