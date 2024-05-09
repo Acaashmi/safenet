@@ -3,6 +3,7 @@ import loginRouter from "./routes/login.js";
 import registerRouter from "./routes/register.js";
 import mongoDBConnection from "./mongo.js";
 import postRouter from "./routes/postUpload.js";
+import postDisplay from "./routes/postDisplay.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ mongoDBConnection().then((_) => {
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use("/postUpload",postRouter); 
+app.use("/postDisplay",postDisplay);
 
 app.get("/", (req, res) => {
   res.send("Hello World");

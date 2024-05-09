@@ -19,10 +19,10 @@ postRouter.post("/", async (req, res) => {
     try {
         const { title, content, date, location } = req.body;
     
-        // // If any field is missing then error
-        // if (!title || !content || !date || !location) {
-        //   throw new Error("All fields are needed");
-        // }
+        // If any field is missing then error
+        if (!title || !content || !date || !location) {
+          throw new Error("All fields are needed");
+        }
     
         // // Check if user with same username exists
         // const userRes = await user.findOne({ username });
@@ -33,12 +33,13 @@ postRouter.post("/", async (req, res) => {
         //   });
         // }
     
-        // // Add user to database
-        // const newUser = await user.create({
-        //   name,
-        //   username,
-        //   password,
-        // });
+        // Add user to database
+        const newUser = await post.create({
+          title,
+          content,
+          date,
+          location
+        });
         console.log(title,content,date,location);
     }
     catch(err){
