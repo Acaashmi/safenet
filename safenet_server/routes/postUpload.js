@@ -16,23 +16,7 @@ postRouter.post("/", async (req, res) => {
     res.setHeader("Access-Control-Allow-Headers", "Content-Type");
     res.setHeader("Access-Control-Allow-Credentials", true);
 
-    try {
-        const { title, content, date, location } = req.body;
-    
-        // If any field is missing then error
-        if (!title || !content || !date || !location) {
-          throw new Error("All fields are needed");
-        }
-    
-        // // Check if user with same username exists
-        // const userRes = await user.findOne({ username });
-        // if (userRes) {
-        //   return res.json({
-        //     message: "User with same username exists",
-        //     status: 400,
-        //   });
-        // }
-    
+    try{
         // Add user to database
         const newUser = await post.create({
           title,
@@ -40,12 +24,10 @@ postRouter.post("/", async (req, res) => {
           date,
           location
         });
-        console.log(title,content,date,location);
+      res.send().statusCode(200);
     }
     catch(err){
-
-    }
-    
-        
+      res.send().statusCode(500);
+    }       
 });
 export default postRouter;

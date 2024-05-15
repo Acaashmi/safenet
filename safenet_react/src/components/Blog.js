@@ -63,7 +63,8 @@ function Blog({
         </div>
         {/* Actual Content */}
         <div className="text-zinc-200">
-          <p className="text-small max-w-3xl">{information}</p>
+          <p className="text-small max-w-3xl" dangerouslySetInnerHTML={{__html:information}}></p>
+
         </div>
       </CardBody>
       <CardFooter className="gap-3">

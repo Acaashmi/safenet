@@ -1,6 +1,4 @@
 import { Router } from "express";
-import bodyParser from "body-parser";
-import multer from "multer";
 import post from "../schema/post.js";
 
 const postDisplay = Router();
@@ -11,11 +9,18 @@ const postDisplay = Router();
     res.setHeader("Access-Control-Allow-Credentials", true);
 
     try {
-        const posts = await post.find({});
-        console.log(posts);
+        const query_location = req.query.location;
+        if(query_location){
+            const posts =await post.find({location:query_location}).sort("-date");
+            res.json({data:posts,status:200});
+        }
+        else{
+            const posts=await post.find({}).sort("-date");
+            res.json({data:posts,status:200});
+        }
     }
     catch(err){
-
+        res.json({status:500,message:err});
     }
     
         

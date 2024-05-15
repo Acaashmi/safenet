@@ -1,4 +1,5 @@
-import React from "react";
+import React,{useState} from "react";
+import BlogContainer from "./BlogContainer";
 import {
   Navbar,
   NavbarBrand,
@@ -14,6 +15,12 @@ import {
 } from "@nextui-org/react";
 
 function Nav() {
+  const [location, setLocation] = useState('');
+
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+
   return (
     <Navbar className="bg-black bg-opacity-80">
       {/* Logo Region */}
@@ -36,9 +43,12 @@ function Nav() {
               "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
           }}
           placeholder="Search for Location"
+          value={location}
+          onChange={handleLocationChange}
           size="sm"
           type="search"
         />
+        {location && <BlogContainer location={location} />}
       </NavbarContent>
 
       {/* User Avatar Region .. which is now a dropdown */}
