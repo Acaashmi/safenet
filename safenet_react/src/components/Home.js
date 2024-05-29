@@ -5,21 +5,6 @@ import About from "./About";
 import BlogContainer from "./BlogContainer";
 function Home() {
   const [posts, setPosts] = useState([]);
-  
-  useEffect(() => {
-    const f = async () => {
-      try {
-        await fetch("http://localhost:3001/postDisplay")
-          .then((res) => res.json())
-          .then(({ data, status }) => {
-            setPosts(data);
-          });
-      } catch (err) {
-        console.error("Error");
-      }
-    };
-    f();
-  }, []);
 
   return (
     <main className="bg-[#090919] font-[Poppins]">
@@ -47,27 +32,7 @@ function Home() {
       {/* Posts Section Starts Here */}
       <div className="flex flex-col items-center justify-center font-[Poppins] gap-5 mt-5">
         {/* Header */}
-        <h1 className="text-white font-bold text-3xl">Recent Posts</h1>
-        <div>
-          {posts.length === 0 ? (
-            <p>Loading Posts.....</p>
-          ) : (
-            posts.map((post, index) => (
-              <>
-                {console.log(post)}
-                <Blog
-                  name="Ashmi"
-                  username="ashmi"
-                  date="10th Dec"
-                  year="2023"
-                  location={post.location}
-                  information={post.content}
-                  likeCount="123K"
-                />
-              </>
-            ))
-          )}
-        </div>
+        <BlogContainer></BlogContainer>
       </div>
     </main>
   );

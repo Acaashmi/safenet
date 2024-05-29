@@ -3,6 +3,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
 import UploadPost from "./components/UploadPost";
+import LocationProvider from "./components/Location";
 
 import {
   createBrowserRouter,
@@ -58,5 +59,5 @@ export default function App() {
 
 
 
-  return <RouterProvider router={router} />;
+  return <LocationProvider><RouterProvider router={router} /></LocationProvider>;
 }

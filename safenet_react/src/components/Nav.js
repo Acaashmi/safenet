@@ -1,5 +1,6 @@
-import React,{useState} from "react";
+import React,{useContext, useState} from "react";
 import BlogContainer from "./BlogContainer";
+import { locationContext } from "./Location";
 import {
   Navbar,
   NavbarBrand,
@@ -15,7 +16,8 @@ import {
 } from "@nextui-org/react";
 
 function Nav() {
-  const [location, setLocation] = useState('');
+  const {location,setLocation}= useContext (locationContext)
+
 
   const handleLocationChange = (e) => {
     setLocation(e.target.value);
@@ -48,7 +50,7 @@ function Nav() {
           size="sm"
           type="search"
         />
-        {location && <BlogContainer location={location} />}
+        
       </NavbarContent>
 
       {/* User Avatar Region .. which is now a dropdown */}
